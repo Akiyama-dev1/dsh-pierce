@@ -66,7 +66,28 @@ ANCHOR            —— 结尾复述（收尾锚）
 
 ---
 
-## 三、它能干什么
+## 三、和 dsh-purge 的关系
+
+Pierce 的思路来自 **dsh-purge**：往 `systemPrompt` 注册一段自己的 section、用 `<|im_start|>system:` 外壳包住、把 order 压在最后、靠 disposer 做到「替换而非叠加」。这套路子是 purge 先跑通的，Pierce 直接沿用，没有重新发明。
+
+区别在于**它是为手机端重写的实现**，不是原生移植：
+
+| 维度 | dsh-purge | Pierce |
+|---|---|---|
+| 代码量 | 48,357 行 / 94 文件 / 4.1 MB | 1,152 行 / 9 文件 / 107 KB |
+| 构建 | 需要 build-client 脚本抽片段 | **零构建**，client.js 手写单文件 |
+| 客户端 | 506 KB，桌面面板密度 | 33 KB，44px 触控、safe-area、低端机降级 |
+| 状态写入 | — | tmp+rename 原子写 + 环形备份 + 目录白名单 |
+| 桌面分支 | desktop.js / asar 抽取 / wscript 等 | 无（这些在手机上全是死代码） |
+| 档位 | 多模型预设体系 | 三档：Low / Max / Ultra |
+
+这正是它能在手机上稳住的原因：**把桌面端那部分负重整个扔掉**，只保留注入这一件事，然后把周边（写盘、路径、错误隔离、UI）按手机的约束重做一遍。
+
+purge 的提示词没有丢：`presets/legacy-purge.md`（21 KB）随包分发，作为 Ultra 档的默认素材。该文本的著作权归原作者。
+
+---
+
+## 四、它能干什么
 
 ### 三档强度
 
@@ -109,7 +130,7 @@ curl -s http://127.0.0.1:3080/dsh-pierce/state
 
 ---
 
-## 四、能跑在哪
+## 五、能跑在哪
 
 | 环境 | 支持 | 说明 |
 |---|---|---|
@@ -123,7 +144,7 @@ curl -s http://127.0.0.1:3080/dsh-pierce/state
 
 ---
 
-## 五、安装
+## 六、安装
 
 ### 一行装
 
@@ -154,7 +175,7 @@ sh install.sh p.tgz
 
 ---
 
-## 六、目录结构
+## 七、目录结构
 
 ```
 dsh-pierce/
@@ -176,7 +197,7 @@ dsh-pierce/
 
 ---
 
-## 七、稳定性
+## 八、稳定性
 
 每一条都对应一个踩过的坑：
 
@@ -192,7 +213,7 @@ dsh-pierce/
 
 ---
 
-## 八、卸载
+## 九、卸载
 
 ```sh
 rm -rf <profile>/local-plugins/dsh-pierce <profile>/node_modules/dsh-pierce
@@ -208,7 +229,7 @@ rm -rf <profile>/local-plugins/dsh-pierce <profile>/node_modules/dsh-pierce
 
 ---
 
-## 九、FAQ
+## 十、FAQ
 
 **面板没出现？**
 刷新页面。客户端 bundle 需要重新加载，宿主重启不会自动刷新 WebView。
@@ -227,6 +248,6 @@ Low 约 460 字符、Max 约 1,450 字符，每轮都发。Ultra 看你贴多少
 
 ---
 
-## 十、License
+## 十一、License
 
 MIT © 2026 **Akiyama Kotom1**
