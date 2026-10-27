@@ -4,7 +4,7 @@
 >
 > **作者：Akiyama Kotom1** · Created by Akiyama Kotom1
 
-![version](https://img.shields.io/badge/version-0.2.0-6E8BFF)
+![version](https://img.shields.io/badge/version-0.3.0-6E8BFF)
 ![license](https://img.shields.io/badge/license-MIT-9B6BFF)
 ![platform](https://img.shields.io/badge/platform-DSH%20%C2%B7%20Android%20%2F%20Linux%20%2F%20macOS%20%2F%20Windows-2b2f3a)
 
@@ -99,6 +99,17 @@ purge 的提示词没有丢：`presets/legacy-purge.md`（21 KB）随包分发�
 
 切换**即时生效**，不用重开会话、不用重启 DSH。
 
+### 首次使用：免责许可
+
+第一次打开面板会先进入闸门，三步全部完成才允许注入：
+
+1. **等 10 秒** —— 倒计时结束前，勾选框全部锁死
+2. **滑到条款底部** —— 没滑到底，勾选框不解锁
+3. **勾选三项** —— 全部勾上，「同意并启用」才会亮
+
+同意结果写入本地配置并记录协议版本号。面板底部的「查看免责许可」随时可以重读全文。
+协议版本一旦变更，之前同意作废，需要重新确认，否则插件停止注入（状态显示为 locked）。
+
 ### 面板
 
 对话标签栏里一颗纯文字 `Pierce`（和「对话」「轨迹」同排），点开是全屏面板：
@@ -149,13 +160,13 @@ curl -s http://127.0.0.1:3080/dsh-pierce/state
 ### 一行装
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/install.sh | sh -s -- https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.2.0.tgz
+curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/install.sh | sh -s -- https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.3.0.tgz
 ```
 
 ### 手动
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.2.0.tgz -o p.tgz
+curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.3.0.tgz -o p.tgz
 sh install.sh p.tgz
 ```
 
@@ -236,6 +247,9 @@ rm -rf <profile>/local-plugins/dsh-pierce <profile>/node_modules/dsh-pierce
 
 **状态显示已接管但模型没变？**
 看诊断行的 CHARGE。字符数为 0 说明段落没挂上，看 lastError。Ultra 档没贴文本时注入是空的。
+
+**面板打不开、或者状态显示 locked？**
+说明许可还没确认。第一次使用要等 10 秒、把条款滑到底、勾满三项，按钮才会亮。
 
 **会不会越用越长？**
 不会。每次都是先撤再挂，注册表里永远只有一段 `pierce:core`。
