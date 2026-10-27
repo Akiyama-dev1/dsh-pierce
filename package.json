@@ -48,10 +48,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/USER/dsh-pierce.git"
+    "url": "git+https://github.com/Akiyama-dev1/dsh-pierce.git"
   },
-  "homepage": "https://github.com/USER/dsh-pierce#readme",
+  "homepage": "https://github.com/Akiyama-dev1/dsh-pierce#readme",
   "bugs": {
-    "url": "https://github.com/USER/dsh-pierce/issues"
+    "url": "https://github.com/Akiyama-dev1/dsh-pierce/issues"
   }
 }

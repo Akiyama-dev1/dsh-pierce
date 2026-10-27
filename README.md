@@ -128,13 +128,13 @@ curl -s http://127.0.0.1:3080/dsh-pierce/state
 ### 一行装
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/USER/dsh-pierce/main/install.sh | sh -s -- https://raw.githubusercontent.com/USER/dsh-pierce/main/dsh-pierce-0.2.0.tgz
+curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/install.sh | sh -s -- https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.2.0.tgz
 ```
 
 ### 手动
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/USER/dsh-pierce/main/dsh-pierce-0.2.0.tgz -o p.tgz
+curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.2.0.tgz -o p.tgz
 sh install.sh p.tgz
 ```
 
