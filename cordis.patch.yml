@@ -1,0 +1,11 @@
+# dsh-pierce bundle patch
+#
+# 只有一条：拿掉 harness 自带的身份句，避免和 Pierce 人格打架。
+# 本体 insert 写在 profile 层（profiles/web/cordis.patch.yml），
+# 这里再 insert 一次会 already queued —— 刻意不写。
+
+- id: system-prompt
+  config:
+    includeHarnessIdentity: false
+    personaPrefix: ""
+    personaSuffix: ""

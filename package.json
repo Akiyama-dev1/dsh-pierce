@@ -1,0 +1,57 @@
+{
+  "name": "dsh-pierce",
+  "version": "0.2.0",
+  "description": "Pierce · 手机端提示词接管 + 设置页面板（零构建 / 幂等 / 原子写）",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "bin",
+    "install.sh",
+    "presets"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "prompt",
+    "mobile"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dsh": {
+    "runtime": "host",
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [],
+      "immediately": true
+    }
+  },
+  "author": {
+    "name": "Akiyama Kotom1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/USER/dsh-pierce.git"
+  },
+  "homepage": "https://github.com/USER/dsh-pierce#readme",
+  "bugs": {
+    "url": "https://github.com/USER/dsh-pierce/issues"
+  }
+}
