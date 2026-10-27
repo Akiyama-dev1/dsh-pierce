@@ -4,7 +4,7 @@
 >
 > **作者：Akiyama Kotom1** · Created by Akiyama Kotom1
 
-![version](https://img.shields.io/badge/version-0.3.0-6E8BFF)
+![version](https://img.shields.io/badge/version-0.3.1-6E8BFF)
 ![license](https://img.shields.io/badge/license-MIT-9B6BFF)
 ![platform](https://img.shields.io/badge/platform-DSH%20%C2%B7%20Android%20%2F%20Linux%20%2F%20macOS%20%2F%20Windows-2b2f3a)
 
@@ -101,6 +101,8 @@ purge 的提示词没有丢：`presets/legacy-purge.md`（21 KB）随包分发�
 
 ### 首次使用：免责许可
 
+顶部是一条红色警示，写明仅供学习研究与下载后 24 小时内删除；不勾满三项，插件不注入任何内容。
+
 第一次打开面板会先进入闸门，三步全部完成才允许注入：
 
 1. **等 10 秒** —— 倒计时结束前，勾选框全部锁死
@@ -109,6 +111,16 @@ purge 的提示词没有丢：`presets/legacy-purge.md`（21 KB）随包分发�
 
 同意结果写入本地配置并记录协议版本号。面板底部的「查看免责许可」随时可以重读全文。
 协议版本一旦变更，之前同意作废，需要重新确认，否则插件停止注入（状态显示为 locked）。
+
+### 日志与排错
+
+宿主维护一个 300 条的环形日志，记录挂载、注入结果、许可拦截、路由错误与导出动作。
+
+- 面板底部 Diagnostics 卡显示：条数、最近错误、日志目录
+- 点「保存日志」→ 写入 ~/.dsh/pierce/logs/pierce-<时间戳>.log，路径直接显示在卡片里
+- 出错时先看红字那一行；把导出的 .log 发出来即可复现问题
+
+接口：GET /dsh-pierce/logs、POST /dsh-pierce/logs/export。
 
 ### 面板
 
@@ -160,13 +172,13 @@ curl -s http://127.0.0.1:3080/dsh-pierce/state
 ### 一行装
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/install.sh | sh -s -- https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.3.0.tgz
+curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/install.sh | sh -s -- https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.3.1.tgz
 ```
 
 ### 手动
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.3.0.tgz -o p.tgz
+curl -fsSL https://raw.githubusercontent.com/Akiyama-dev1/dsh-pierce/main/dsh-pierce-0.3.1.tgz -o p.tgz
 sh install.sh p.tgz
 ```
 
